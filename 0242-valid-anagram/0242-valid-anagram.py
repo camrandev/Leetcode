@@ -1,19 +1,22 @@
-class Solution:
-    def generateFreqTable(self, s: str):
-        table = {}
-        for char in s:
-            table[char] = table.get(char, 0) + 1 
-        return table
 
+#create a frequency table for each string
+#check if the frequency tables are the same by value, can do python using ==, in javascript it would require manual iteration over the strings
+
+
+
+class Solution:
+    def map_s(self, s:str)->dict:
+        out = {}
+        for char in s:
+            out[char] = out.get(char, 0) + 1
+        
+        return out
 
     def isAnagram(self, s: str, t: str) -> bool:
-        if (len(s) != len(t)): 
-            return False
+        s_table = self.map_s(s)
+        t_table = self.map_s(t)
 
-        s_table = self.generateFreqTable(s)
-        t_table = self.generateFreqTable(t)
-
-        if s_table != t_table:
-            return False
-
-        return True
+        return s_table == t_table
+        
+        
+        
