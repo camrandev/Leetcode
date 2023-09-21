@@ -1,30 +1,30 @@
-#set pointers to track the buy and sell price
-#set variable to track the current max profit
+#need to pick the most profitable trade
+#set pointers to buy, sell -> init to 0, 1
+#set current max_p, init to 0
 
-#move the pointers across prices to deterimine the max price
+#iterate across the length of the array with the sell pointer
+#check if the current trade (the current sell price and current buy price) is profitiable
+    #if it is, calculate the profit
+    #update the max_p tracking variable to the greater of itself and the profit
 
-#price determination algo:
-#with b starting at 0 and s starting at 1
-    #check if s is greater than b
-        #if it is, calculcate the profit of buying at b and selling at s
-        #if that profit is greater than the current max, update it
-    #if s is not greater than b, you have found a dip
-        #move b over to where s is
-    #move s ahead by 1
-        #this works, because anytime b pointer is > s pointer, you have found a potential buy point, and the algorithm will then check the profit for each possible trade after this against the current max profit
+#if the current trade is not profitiable, we have found a new lowpoint -> move the buy pointer to where the sell pointer is
 
+#move the sell pointer ahead by 1
+
+#return the max profit
 
 class Solution:
     def maxProfit(self, prices: List[int]) -> int:
         b, s = 0, 1
-        max_pr = 0
+        maxP = 0
 
-        while (s < len(prices)):
+
+        while s <= len(prices) - 1:
             if prices[s] > prices[b]:
                 profit = prices[s] - prices[b]
-                max_pr = max(profit, max_pr)
+                maxP = max(profit, maxP)
             else:
                 b = s
-            s += 1
-
-        return max_pr        
+            s+=1
+        return maxP
+        
