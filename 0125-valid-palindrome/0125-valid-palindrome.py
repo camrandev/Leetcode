@@ -1,27 +1,32 @@
-#strip the string + convert into lower cast
-#set pointers to the start and the end
-#while the left is less/equal to the right
-    #check if the values at the pointers are equal
-    #if not, return false
-
-    #return true
 
 
+#determine if palindrome
+#set pointers to start, end of of cleaned string
+#work our way towards the middle, accounting for a string of uneven length, checking if the characters are the same, if they are not the same
+    #early return false
+
+#return true
+
+#aaa
 
 class Solution:
     def isPalindrome(self, s: str) -> bool:
-        s_alnum = "".join(char.lower() for char in s if char.isalnum())
-        p1, p2 = 0, len(s_alnum)-1
-        print(s_alnum)
+        #strip + format the string
+        s_clean = "".join(char.lower() for char in s if char.isalnum())
 
-        while (p1 <= p2):
-            if s_alnum[p1] != s_alnum[p2]:
+        #determine if palindrone
+        l = 0
+        r = len(s_clean) - 1
+
+        while l <= r:
+            if s_clean[l] != s_clean[r]:
                 return False
-            p1+=1
-            p2-=1
+            l +=1
+            r -=1
         
         return True
 
-    
+
+
         
         
