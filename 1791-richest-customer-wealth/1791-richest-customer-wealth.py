@@ -1,22 +1,17 @@
-#init a varaible to track the max
+#use variable to track the current max wealth
 
-#iterate across the main array
-#sum each sub array
-#check if the sum is greater than the tracked max outside of the loop
+#iterate over the array of sub arrays
+    #sum each sub array
+    #set the tracking variable to the max of the sum and the currext max
 
-#return the tracked max
-
-class Solution(object):
-    def maximumWealth(self, accounts):
-        """
-        :type accounts: List[List[int]]
-        :rtype: int
-        """
+#return the max after all operations complete
+class Solution:
+    def maximumWealth(self, accounts: List[List[int]]) -> int:
         maxw = 0
 
         for acc in accounts:
-            value = sum(acc)
-            maxw = max(value, maxw)
+            wealth = sum(acc)
+            maxw = max(wealth, maxw)
         
         return maxw
         
