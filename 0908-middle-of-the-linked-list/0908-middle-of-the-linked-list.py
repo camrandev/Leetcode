@@ -5,29 +5,21 @@
 #         self.next = next
 
 
-#determine the size of the list -> 1 iteration
-#iterate up to the size / 2 rounded up node
-#return it
+#set 2 pointers
+#start them both at the head
+    #increment first pointer by 1 node per cycle, second pointer by 2 nodes per cycle
+    #second pointer will finish 2x as fast, when it finishes, first pointer will be in the middle
+
+    #return the first pointer
 
 class Solution:
     def middleNode(self, head: Optional[ListNode]) -> Optional[ListNode]:
-        size = 0
-        curr = head
+        p1 = head
+        p2 = head
 
-        while curr:
-            size += 1
-            curr = curr.next
+        #run the iteration while there are at least 2 nodes left
+        while p2 and p2.next:
+            p1 = p1.next
+            p2 = p2.next.next
 
-        mid = size // 2
-        count = 0
-        
-        while head:
-            if count == mid:
-                return head
-            else:
-                count += 1
-                head = head.next
-        
-        return head
-            
-        
+        return p1
