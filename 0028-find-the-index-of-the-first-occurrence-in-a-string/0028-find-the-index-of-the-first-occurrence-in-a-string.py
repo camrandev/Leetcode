@@ -1,35 +1,13 @@
-#Approach
-
-#iterate over the haystack
-#as we go, check if the current element plus the next n elements, with n being length of need - 1 is equal to the needle
-#if it is, return the index of the current element
-
-#return -1
-
-
-#psuedo
-#save window size as the length of the needl - 1
-
-#iterate over the list
-#check if the window the saize of window size, starting at current index is equal to need
-#if it is, return the current elements index
-
-#return -1
-
-
-class Solution(object):
-    def strStr(self, haystack, needle):
-        """
-        :type haystack: str
-        :type needle: str
-        :rtype: int
-        """
-
+class Solution:
+    def strStr(self, haystack: str, needle: str) -> int:
+        p1 = 0
         window = len(needle)
-        
 
-        for index, char in enumerate(haystack):
-            if haystack[index:(index + window)] == needle:
-                return index
+        while p1 <= len(haystack) - window:
+            if haystack[p1:p1 + window] == needle:
+                return p1
+            else:
+                p1 +=1
 
         return -1
+        
