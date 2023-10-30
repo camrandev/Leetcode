@@ -1,30 +1,29 @@
-#need to pick the most profitable trade
-#set pointers to buy, sell -> init to 0, 1
-#set current max_p, init to 0
+#track the current max profit, initialize to 0
+#set pointers to b and s, starting them at 0 and 1
 
-#iterate across the length of the array with the sell pointer
-#check if the current trade (the current sell price and current buy price) is profitiable
-    #if it is, calculate the profit
-    #update the max_p tracking variable to the greater of itself and the profit
+#check if the current trade b - s, is profitable
+    #if it is, set the max profit tracker to the greater of itself and the current
+    #trades profit
+    #if if not, you have found a vallue
+        #move the buy to the sell
+    #increment the sell
 
-#if the current trade is not profitiable, we have found a new lowpoint -> move the buy pointer to where the sell pointer is
+    #repeat the above process until sell pointer has reached the end of the list
 
-#move the sell pointer ahead by 1
-
-#return the max profit
+    #return the max profit tracking variable
 
 class Solution:
     def maxProfit(self, prices: List[int]) -> int:
-        b, s = 0, 1
-        maxP = 0
-
+        maxp = 0
+        b,s = 0, 1
 
         while s <= len(prices) - 1:
-            if prices[s] > prices[b]:
+            if prices[s] - prices[b] > 0:
                 profit = prices[s] - prices[b]
-                maxP = max(profit, maxP)
+                maxp = max(maxp, profit)
             else:
                 b = s
-            s+=1
-        return maxP
+            s += 1
+        
+        return maxp
         
