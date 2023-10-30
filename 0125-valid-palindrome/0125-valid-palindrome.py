@@ -1,32 +1,29 @@
+#check if a string is the same front to back
 
+#format the string: all lowercase, remove all non-alphanumeric characters
 
-#determine if palindrome
-#set pointers to start, end of of cleaned string
-#work our way towards the middle, accounting for a string of uneven length, checking if the characters are the same, if they are not the same
-    #early return false
+#set pointers to front and end
 
-#return true
+#check if the values at the pointers are the same
 
-#aaa
+#if they are not, return false
+#repeat process for all of the characters
+
+#if the process above is able to complete, we have a palindrome and we return
+#true
 
 class Solution:
     def isPalindrome(self, s: str) -> bool:
-        #strip + format the string
-        s_clean = "".join(char.lower() for char in s if char.isalnum())
+        stripped = "".join(char.lower() for char in s if char.isalnum())
 
-        #determine if palindrone
         l = 0
-        r = len(s_clean) - 1
+        r = len(stripped) - 1
 
-        while l <= r:
-            if s_clean[l] != s_clean[r]:
+        while l < r:
+            if stripped[l] != stripped[r]:
                 return False
-            l +=1
-            r -=1
+            r -= 1
+            l += 1
         
         return True
-
-
-
-        
         
