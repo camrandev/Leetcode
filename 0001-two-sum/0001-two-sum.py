@@ -18,17 +18,17 @@ class Solution(object):
         :type target: int
         :rtype: List[int]
         """
-        hashmap = {}
+        hash = {}
         #iterate over the numbers, accessing both the index and number
         for i, num in enumerate(nums):
             #calculate the complement
             comp = target - num
-            #check if the complement exists in the hashmap
-            if comp in hashmap:
-                #if it does, return the value at the complement in the [hashmap, index]
-                return [hashmap[comp], i]
+            #check if the complement exists in the hash
+            if comp in hash:
+                #if it does, return the value at the complement in the [hash, index]
+                return [hash[comp], i]
             else:
                 #if comp not in hm: add the current number as a key, with index as value
-                hashmap[num] = i
+                hash[num] = i
 
         
