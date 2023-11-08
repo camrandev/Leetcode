@@ -27,6 +27,7 @@ class Solution:
 
         while fast and fast.next:
             slow = slow.next
+            #why will this never throw an error -> because if fast.next exists, then .next of that will either be a node or none
             fast = fast.next.next
             if fast == slow:
                 return True
