@@ -4,34 +4,34 @@
 #         self.val = x
 #         self.next = None
 
-#we are looking for either a node with a null next pointer, indicating a none cycle, OR a point where the two nodes are equal, indicating a point where a cycle has occured
+#inputs: a linked list, that may or may not contain a cycle
+#output: a boolean, indicating if a cycle is present in our linked list
 
-#floyds detection algo - fast/slow pointers, 2:1 ratio
+#contraints
+#test cases
 
-#declare fast and slow pointers, start them both at the head
+#declare two pointers, fast and slow, initiate them to the head of the list
 
-#while the fast pointer has a next value -> indicating that we are not at the end of the list
-    #increment the slow pointer by one
-    #increment the fast pointer by two
-    #if the fast and slow are equal, return true, indicating a cycle
-
-#if this code is reached, it means we have hit a cycle, and thus return false
-
-
-
+#declare the main loop to run while we have a fast pointer and a fast.next pointer
+    #increment the slow pointer 1 node
+    #increment the fast pointer 2 nodes
+    #check if they are on the same node
+        #if so, return True -> as we have found a cycle
+    
+    #if the process above completes -> it means that we have hit the end 
+    #of the list, so we return false
 
 class Solution:
     def hasCycle(self, head: Optional[ListNode]) -> bool:
-        slow = head
-        fast = head
+        slow = fast = head
 
         while fast and fast.next:
             slow = slow.next
-            #why will this never throw an error -> because if fast.next exists, then .next of that will either be a node or none
             fast = fast.next.next
-            if fast == slow:
+            #need to use is, to check if they are on the same memory reference         
+            if slow is fast:
                 return True
-
+                
         return False
 
         
